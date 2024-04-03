@@ -1,27 +1,52 @@
 import os
 import shutil
 import datetime
-#from pymongo import MongoClient
 import os
 import shutil
 
 def backup_folder(source_dir, dest_dir):
     try:
-        # Remove existing destination directory if it exists
-        if os.path.exists(dest_dir):
-            shutil.rmtree(dest_dir)
+        # # Remove existing destination directory if it exists
+        # if os.path.exists(dest_dir):
+        #     shutil.rmtree(dest_dir)
+        
+        # # Copy contents of source directory to destination directory
+        # shutil.copytree(source_dir, dest_dir, symlinks=True)
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        dest_dir = os.path.join(dest_dir, f"backup_{timestamp}")
+        os.makedirs(dest_dir, exist_ok=True)
         
         # Copy contents of source directory to destination directory
         shutil.copytree(source_dir, dest_dir, symlinks=True)
         
         print("Folder backup successful.")
+        
+        print("Folder backup successful.")
     except Exception as e:
         print(f"Error occurred during folder backup: {str(e)}")
-
-# Example usage
 source_folder = r"C:\Users\user\Downloads\FlowData"
 dest_folder = r"D:\backup"
 backup_folder(source_folder, dest_folder)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Function to backup a folder from source to destination
 # def backup_folder(source_dir, dest_dir):
